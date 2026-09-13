@@ -12,7 +12,7 @@
         button {
             border: none;
             border-radius: 7px;
-            padding: 10px 16px;
+            padding: 20px 25px;
             margin: 5px;
             background-color: #333;
             color: aliceblue;
@@ -41,11 +41,12 @@
 </head>
 <body>
     <h1 class="game-header">WELCOME TO THE RPS GAME</h1>
-    <button id="roc-elem" onclick="playGame('Rock')">✊</button>
-    <button id="pap-elem" onclick="playGame('Paper')">✋</button>
-    <button id="scis-elem" onclick="playGame('Scissor')">✌️</button>
-    <p id="display"></p>
+    <button id="roc-elem" onclick="playGame('✊')">✊</button>
+    <button id="pap-elem" onclick="playGame('✋')">✋</button>
+    <button id="scis-elem" onclick="playGame('✌️')">✌️</button>
+    <p id="display" ></p>
     <p id="com-elem"></p>
+    
     <p id="game-result" class="result-box"></p>
     <script>
         let RockElem = document.getElementById("roc-elem");
@@ -75,7 +76,7 @@
             Display.textContent = `You choose ${playerChoice}`;
             
             const randomNum = Math.floor(Math.random() * 3);
-            const choices = ["Rock", "Paper", "Scissor"];
+            const choices = ["✊", "✋", "✌️"];
             const computerChoice = choices[randomNum];
 
             Comelem.textContent = `Computer Chose ${computerChoice}`;
@@ -85,9 +86,9 @@
                 GameResult.textContent = "It's a Tie!";
                 GameResult.style.color = "yellow";
             } else if (
-                (playerChoice === "Rock" && computerChoice === "Scissor") ||
-                (playerChoice === "Paper" && computerChoice === "Rock") ||
-                (playerChoice === "Scissor" && computerChoice === "Paper")
+                (playerChoice === "✊" && computerChoice === "✌️") ||
+                (playerChoice === "✋" && computerChoice === "✊") ||
+                (playerChoice === "✌️" && computerChoice === "✋")
             ) {
                 GameResult.textContent = "You Win!";
                 GameResult.style.color = "lightgreen";
