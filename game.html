@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+        .game-header {
+            color: blue;
+            text-shadow: 2px 4px rgb(237, 234, 234);
+            font-size: 45px;
+            text-align: center;
+            font-weight: bold;
+        }
+        button {
+            border: none;
+            border-radius: 7px;
+            padding: 10px 16px;
+            margin: 5px;
+            background-color: #333;
+            color: aliceblue;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        body {
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-family: system-ui, sans-serif;
+            margin-top: 50px;
+        }
+        .result-box {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK PAPER SCISSOR</title>
+</head>
+<body>
+    <h1 class="game-header">WELCOME TO THE RPS GAME</h1>
+    <button id="roc-elem" onclick="playGame('Rock')">✊</button>
+    <button id="pap-elem" onclick="playGame('Paper')">✋</button>
+    <button id="scis-elem" onclick="playGame('Scissor')">✌️</button>
+    <p id="display"></p>
+    <p id="com-elem"></p>
+    <p id="game-result" class="result-box"></p>
+    <script>
+        let RockElem = document.getElementById("roc-elem");
+        let PaperElem = document.getElementById("pap-elem");
+        let  ScissorElem = document.getElementById("scis-elem")
+        let Display = document.getElementById("display")
+        let Comelem = document.getElementById("com-elem") 
+        const GameResult = document.getElementById("game-result");
+        
+       /* function Rock() {
+            let computerChoice = Math.floor(Math.random() * 3);
+            if (computerChoice === 0) {
+                Display.innerHTML = "It's a tie! You both chose Rock.";
+                Comelem.innerHTML = "Computer chose Rock.";
+            } else if (computerChoice === 1) {
+                Display.innerHTML = "You lose! Paper beats Rock.";
+                Comelem.innerHTML = "Computer chose Paper.";
+            } else {
+                Display.innerHTML = "You win! Rock beats Scissors.";
+                Comelem.innerHTML = "Computer chose Scissors.";
+            }
+        }
+            */
+       
+
+        function playGame(playerChoice) {
+            Display.textContent = `You choose ${playerChoice}`;
+            
+            const randomNum = Math.floor(Math.random() * 3);
+            const choices = ["Rock", "Paper", "Scissor"];
+            const computerChoice = choices[randomNum];
+
+            Comelem.textContent = `Computer Chose ${computerChoice}`;
+
+            // Determine winner
+            if (playerChoice === computerChoice) {
+                GameResult.textContent = "It's a Tie!";
+                GameResult.style.color = "yellow";
+            } else if (
+                (playerChoice === "Rock" && computerChoice === "Scissor") ||
+                (playerChoice === "Paper" && computerChoice === "Rock") ||
+                (playerChoice === "Scissor" && computerChoice === "Paper")
+            ) {
+                GameResult.textContent = "You Win!";
+                GameResult.style.color = "lightgreen";
+            } else {
+                GameResult.textContent = "Computer Wins!";
+                GameResult.style.color = "lightcoral";
+            }
+        }
+    </script>
+</body>
+</html>
